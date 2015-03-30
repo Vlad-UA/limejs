@@ -288,6 +288,9 @@ def build(name,options):
     if options.advanced:
         call+=" -f --compilation_level=ADVANCED_OPTIMIZATIONS"
         
+    if options.debug:
+        call+=" -f --debug -f --formatting=PRETTY_PRINT"
+        
     if options.externs_file:
         for i, opt in enumerate(options.externs_file):
             call+=" -f --externs="+opt
@@ -403,6 +406,9 @@ Commands:
                         
     parser.add_option("-d", "--define", dest="define", action="append",
                         help="Define custom variable accessible before build.")
+                        
+    parser.add_option("-g", "--debug", dest="debug", action="store_true",
+                      help="Closure Compiler: longer names for symbols for debugging of the advanced optimizations.")                        
     
     (options, args) = parser.parse_args()
     if not (len(args) == 2 or (len(args)==1 and ['init','update'].count(args[0])==1 )) :
