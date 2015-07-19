@@ -409,6 +409,9 @@ Commands:
                         
     parser.add_option("-d", "--define", dest="define", action="append",
                         help="Define custom variable accessible before build.")
+                        
+    parser.add_option("-g", "--debug", dest="debug", action="store_true",
+                      help="Closure Compiler: longer names for symbols for debugging of the advanced optimizations.")                        
     
     (options, args) = parser.parse_args()
     if not (len(args) == 2 or (len(args)==1 and ['init','update'].count(args[0])==1 )) :
